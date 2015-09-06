@@ -19,6 +19,8 @@ var uglify = require('gulp-uglify');
 var zip = require('gulp-zip');
 var source = require('vinyl-source-stream');
 
+var bump = require('gulp-bump');
+
 program.on('--help', function(){
   console.log('  Tasks:');
   console.log();
@@ -112,7 +114,19 @@ gulp.task('serve', ['build'], function() {
     gutil.log("Server started on '" + gutil.colors.green('http://localhost:3000') + "'");
   });
 });
+/*
+gulp.task('bump', function() {
+  bump();
+});
 
+gulp.task('bump-minor', function() {
+  bump({type:'minor'});
+});
+
+gulp.task('bump-major', function() {
+  bump({type:'major'});
+});
+*/
 function browserifyError(err) {
   gutil.log(gutil.colors.red('ERROR'), gutil.colors.gray(err.message));
   this.emit('end');
